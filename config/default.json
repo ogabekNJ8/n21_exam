@@ -1,0 +1,32 @@
+{
+  "port": 3000,
+  "db_host": "localhost",
+  "db_username": "postgres",
+  "db_port": 5432,
+  "db_password": "3333",
+  "db_name": "wedding_service",
+
+  "adminAccess_key": "AccessTokenKeyAdmin",
+  "adminRefresh_key": "RefreshTokenKeyAdmin",
+  "adminAccess_time": "10h",
+  "adminRefresh_time": "20h",
+  "adminCookie_refresh_time": 12960000,
+
+  "ownerAccess_key": "AccessTokenKeyOwner",
+  "ownerRefresh_key": "RefreshTokenKeyOwner",
+  "ownerAccess_time": "19h",
+  "ownerRefresh_time": "12h",
+  "ownerCookie_refresh_time": 1296000000,
+
+  "clientAccess_key": "AccessTokenKeyClient",
+  "clientRefresh_key": "RefreshTokenKeyClient",
+  "clientAccess_time": "19h",
+  "clientRefresh_time": "12h",
+  "clientCookie_refresh_time": 1296000000,
+
+  "smtp_password": "bnvybqfgrriluboo",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_user": "ogabekmullaboyev01@gmail.com",
+  "api_url": "http://localhost:3000"
+}
