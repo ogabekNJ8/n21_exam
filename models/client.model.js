@@ -1,28 +1,20 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-const Owner = sequelize.define(
-  "owner",
+const Client = sequelize.define(
+  "client",
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     full_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        is: /^\d{2}-\d{3}-\d{2}-\d{2}$/,
-      },
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: true,
       validate: {
@@ -33,25 +25,23 @@ const Owner = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    phone: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
     is_active: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    refresh_token: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
     activation_link: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      allowNull: true,
     },
   },
   {
     freezeTableName: true,
     timestamps: true,
-    tableName: "owners",
   }
 );
 
-module.exports = Owner;
+module.exports = Client;
