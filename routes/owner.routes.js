@@ -34,5 +34,4 @@ router.patch("/:id", validateIdParam, ownerGuard, ownerSelfGuard, updateOwner);
 router.delete("/:id", validateIdParam, ownerGuard, ownerSelfGuard, deleteOwner);
 router.patch("/:id/change-password", ownerGuard, ownerSelfGuard, changePassword);
 
-
 module.exports = router;

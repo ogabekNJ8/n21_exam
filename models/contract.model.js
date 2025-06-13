@@ -76,6 +76,8 @@ Contract.belongsTo(Client, {
   as: "client",
 });
 
+Client.hasMany(Contract)
+
 Contract.belongsToMany(WeddingService, {
   through: ContractService,
   foreignKey: "contract_id",

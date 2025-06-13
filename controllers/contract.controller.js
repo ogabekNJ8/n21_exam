@@ -7,6 +7,8 @@ const {
   createContractSchema,
   updateContractSchema,
 } = require("../validations/contract.validation");
+const { Op } = require("sequelize");
+
 
 const createContract = async (req, res) => {
   try {
@@ -158,12 +160,10 @@ const updateContractStatus = async (req, res) => {
   }
 };
 
-// 🔍 FILTERING FUNCTIONS
-
 // Date range
 const getContractsByDateRange = async (req, res) => {
   try {
-    const { from, to } = req.query;
+    const { from, to } = req.body;
 
     const contracts = await Contract.findAll({
       where: {
@@ -173,7 +173,7 @@ const getContractsByDateRange = async (req, res) => {
       },
     });
 
-    res.send({ message: "Sana bo‘yicha contractlar", contracts });
+    res.send({ message: "Sana bo'yicha contractlar", contracts });
   } catch (error) {
     sendErrorResponse(res, error, 500);
   }
@@ -182,7 +182,7 @@ const getContractsByDateRange = async (req, res) => {
 // Clients who used services
 const getClientsByDateRange = async (req, res) => {
   try {
-    const { from, to } = req.query;
+    const { from, to } = req.body;
 
     const clients = await Client.findAll({
       include: [
@@ -199,7 +199,7 @@ const getClientsByDateRange = async (req, res) => {
     });
 
     res.send({
-      message: "Ko‘rsatilgan sanalarda xizmatdan foydalangan clientlar",
+      message: "Ko'rsatilgan sanalarda xizmatdan foydalangan clientlar",
       clients,
     });
   } catch (error) {
@@ -208,6 +208,7 @@ const getClientsByDateRange = async (req, res) => {
 };
 
 // Cancelled clients
+
 const getCancelledClientsByDateRange = async (req, res) => {
   try {
     const { from, to } = req.query;
@@ -215,12 +216,11 @@ const getCancelledClientsByDateRange = async (req, res) => {
     const clients = await Client.findAll({
       include: [
         {
-          model: Contract,
-          as: "contracts",
+          model: Contract, // faqat model nomi
           where: {
             is_cancelled: true,
             event_date: {
-              [require("sequelize").Op.between]: [from, to],
+              [Op.between]: [from, to],
             },
           },
         },
@@ -228,7 +228,7 @@ const getCancelledClientsByDateRange = async (req, res) => {
     });
 
     res.send({
-      message: "Bekor qilingan xizmatlar bo‘yicha clientlar",
+      message: "Bekor qilingan xizmatlar bo'yicha clientlar",
       clients,
     });
   } catch (error) {
@@ -271,7 +271,7 @@ const getClientPayments = async (req, res) => {
       include: ["payments"],
     });
 
-    res.send({ message: "Client to‘lovlari", contracts });
+    res.send({ message: "Client to'lovlari", contracts });
   } catch (error) {
     sendErrorResponse(res, error, 500);
   }

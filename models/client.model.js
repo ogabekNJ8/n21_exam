@@ -44,4 +44,9 @@ const Client = sequelize.define(
   }
 );
 
+// Client.hasMany(Contract, {
+//   foreignKey: "client_id",
+//   as: "contracts", // Shu aliasni controllerda ishlatyapsiz
+// });
+
 module.exports = Client;

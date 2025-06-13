@@ -24,7 +24,6 @@ router.post("/login", login);
 router.post("/refresh", refreshToken);
 router.post("/logout", logout);
 
-// ADMIN ONLY
 router.get("/admin", adminGuard, getAllClients);
 router.get("/admin/:id", validateIdParam, adminGuard, getClient);
 router.patch("/admin/:id", validateIdParam, adminGuard, updateClient);
@@ -36,7 +35,6 @@ router.patch(
   changePassword
 );
 
-// CLIENT SELF
 router.get("/:id", validateIdParam, clientGuard, clientSelfGuard, getClient);
 router.patch(
   "/:id",

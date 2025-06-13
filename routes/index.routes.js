@@ -11,8 +11,6 @@ const weddingServiceRoutes = require("./wedding_service.routes");
 const contractRoutes = require("./contract.routes");
 const paymentRoutes = require("./payment.routes");
 // const reviewRoutes = require("./review.routes");
-// const scheduleRoutes = require("./schedule.routes");
-// const contractServiceRoutes = require("./contract_service.routes");
 
 router.use("/admins", adminRoutes);
 router.use("/owners", ownerRoutes);
@@ -24,7 +22,5 @@ router.use("/wedding-services", weddingServiceRoutes);
 router.use("/contracts", contractRoutes);
 router.use("/payments", paymentRoutes);
 // router.use("/reviews", reviewRoutes);
-// router.use("/schedules", scheduleRoutes);
-// router.use("/contract-services", contractServiceRoutes);
 
 module.exports = router;

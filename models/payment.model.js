@@ -23,8 +23,7 @@ const Payment = sequelize.define(
       allowNull: false,
     },
     payment_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
+      type: DataTypes.DATEONLY
     },
     comment: {
       type: DataTypes.STRING,
